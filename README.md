@@ -7,8 +7,9 @@
 
 ### Komendy
 #### UWAGA, używaj network create TYLKO lokalnie
+```
 docker network create Z31_network
-
+```
 
 ```
 cd server/
@@ -34,4 +35,17 @@ docker run -it --rm \
   --network Z31_network \
   pclient1 pserver1 8001
 
+```
+
+wyjście:
+```
+Ctr+C
+lub
+docker stop pserver1
+```
+
+### uruchomienie klienta do zad 1.1
+dodajemy -v $(pwd):/output by skopiować wykres z dockera na hosta
+```
+docker run -it -v $(pwd):/output  --network Z31_network     pclient1 pserver1 8001
 ```
