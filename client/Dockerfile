@@ -8,6 +8,6 @@
 
 # client in Python
 FROM python:3
-ADD zad1_1_client.py /
+COPY zad1_1_client.py /
 RUN pip install --no-cache-dir matplotlib
 ENTRYPOINT [ "python", "./zad1_1_client.py" ]

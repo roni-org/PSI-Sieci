@@ -18,7 +18,7 @@ else:
     host = sys.argv[1]
     port = int(sys.argv[2])
 
-print(f"Will send to {HOST}:{port}")
+print(f"Will send to {host}:{port}")
 
 sizes = [2**i for i in range(1, 16)] + [
     40000,
@@ -39,7 +39,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
         start = time.time()
         try:
             try:
-                sock.sendto(data, (HOST, port))
+                sock.sendto(data, (host, port))
             except OSError as e:
                 print(f"Cannot send {size} bytes: {e}")
                 break

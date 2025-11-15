@@ -1,6 +1,6 @@
 # PSI -Sieci
 
-### zespół: Z31
+### zespół: z31
 * Weronika Maślana
 * Alesia Filinkova
 * Diana Pelin
@@ -8,44 +8,40 @@
 ### Komendy
 #### UWAGA, używaj network create TYLKO lokalnie
 ```
-docker network create Z31_network
+docker network create z31_network
 ```
-
+### Uruchomienie serwera do zad 1.1
 ```
 cd server/
-docker build -t pserver1 .
-docker run -it --network-alias pserver1 --hostname pserver1 --network Z31_network --name pserver1 pserver1 8001
+docker build -t z31_pserver1 .
+docker run -it --rm --network-alias z31_pserver1 --hostname z31_pserver1 --network z31_network --name z31_pserver1 z31_pserver1 8001
 
-lub
-
-docker run -it --rm \
-  --network Z31_network \
-  --name pserver1 \
-  pserver1 8001
 ```
-
+### uruchomienie klienta do zad 1.1
+dodajemy -v $(pwd):/output by zachować wykres z dockera na hoscie
 ```
 cd client/
-docker build -t pclient1 .
-docker run -it --network Z31_network pclient1 pserver1 8001
-
-lub
-
-docker run -it --rm \
-  --network Z31_network \
-  pclient1 pserver1 8001
-
+docker build -t z31_pclient1 .
+docker run -it --rm -v $(pwd):/output  --network z31_network     z31_pclient1 z31_pserver1 8001
 ```
 
 wyjście:
 ```
 Ctr+C
 lub
-docker stop pserver1
+docker stop z31_pserver1
+```
+### uruchomienie klienta bez zachowywania wykresu z dockera na hoscie
+```
+cd client/
+docker build -t z31_pclient1 .
+docker run -it --rm --network z31_network z31_pclient1 z31_pserver1 8001
+
 ```
 
-### uruchomienie klienta do zad 1.1
-dodajemy -v $(pwd):/output by skopiować wykres z dockera na hosta
-```
-docker run -it -v $(pwd):/output  --network Z31_network     pclient1 pserver1 8001
-```
+### komendy na bigubu
+ssh username@bigubu.ii.pw.edu.pl "mkdir -p ~/server"
+
+scp server/Dockerfile username@bigubu.ii.pw.edu.pl:~/server/
+
+scp -r username@bigubu.ii.pw.edu.pl:~/client/*.png .
