@@ -8,5 +8,6 @@
 
 # client in Python
 FROM python:3
-ADD tcp_client.py /
-ENTRYPOINT [ "python", "./tcp_client.py" ]
+COPY zad1_1_client.py /
+RUN pip install --no-cache-dir matplotlib
+ENTRYPOINT [ "python", "./zad1_1_client.py" ]
