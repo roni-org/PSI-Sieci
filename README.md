@@ -45,3 +45,6 @@ ssh username@bigubu.ii.pw.edu.pl "mkdir -p ~/server"
 scp server/Dockerfile username@bigubu.ii.pw.edu.pl:~/server/
 
 scp -r username@bigubu.ii.pw.edu.pl:~/client/*.png .
+
+### sprawozdanie
+z zad 1.1 znajduje się w katalogu docs pod nazwą PSI_sprawozdanie_zad_1_1.pdf
