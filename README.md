@@ -39,6 +39,28 @@ docker run -it --rm --network z31_network z31_pclient1 z31_pserver1 8001
 
 ```
 
+### Uruchomienie serwera do zad 2
+```
+cd zad2/server/
+docker build -t z31_server2 .
+docker run -d --name z31_server2 --network z31_network -p 5000:5000 z31_server2
+
+```
+### uruchomienie klienta do zad 2
+
+```
+cd zad2/client/
+docker build -t z31_client2 .
+docker run --rm --name z31_client --network z31_network z31_client2
+```
+
+### sprawdzenie wyników do zad 2
+```
+docker container cp z31_server2:/app/tree_preorder.txt -
+```
+
+
+
 ### komendy na bigubu
 ssh username@bigubu.ii.pw.edu.pl "mkdir -p ~/server"
 
