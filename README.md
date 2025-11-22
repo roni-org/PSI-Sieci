@@ -38,6 +38,7 @@ docker build -t z31_pclient1 .
 docker run -it --rm --network z31_network z31_pclient1 z31_pserver1 8001
 
 ```
+###
 
 ### Uruchomienie serwera do zad 2
 ```
@@ -70,3 +71,5 @@ scp -r username@bigubu.ii.pw.edu.pl:~/client/*.png .
 
 ### sprawozdanie
 z zad 1.1 znajduje się w katalogu docs pod nazwą PSI_sprawozdanie_zad_1_1.pdf
+#
+z zad 2 znajduje się w katalogu zad2/docs pod nazwą PSI_sprawozdanie_zad_2.pdf
