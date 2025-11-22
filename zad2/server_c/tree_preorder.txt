@@ -1,0 +1,16 @@
+Tree (preorder):
+Node id=0 value=0
+Node id=1 value=10
+Node id=3 value=30
+Node id=7 value=70
+Node id=8 value=80
+Node id=4 value=40
+Node id=9 value=90
+Node id=10 value=100
+Node id=2 value=20
+Node id=5 value=50
+Node id=11 value=110
+Node id=12 value=120
+Node id=6 value=60
+Node id=13 value=130
+Node id=14 value=140
