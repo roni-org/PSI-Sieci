@@ -59,6 +59,35 @@ docker run --rm --name z31_client --network z31_network z31_client2
 ```
 docker container cp z31_server2:/app/tree_preorder.txt -
 ```
+###
+### Przygotowanie plika do zad 1.2
+```
+cd zad12
+head -c 10000 /dev/urandom > plik.bin
+```
+
+### Uruchomienie serwera do zad 1.2
+```
+cd zad12/server/
+docker build -t z31_server12 .
+docker run -d --name z31_server12 --network z31_network -p 5005:5005/udp z31_server12
+
+```
+### uruchomienie klienta do zad 1.2
+
+```
+cd zad2/client/
+docker build -t z31_client12 .
+cd ..
+docker run --rm -it -v "$(pwd)/plik.bin:/app/plik.bin:ro" --network z31_network z31_cli
+ent12 ./client /app/plik.bin z31_server12 5005
+```
+
+### sprawdzenie wyników do zad 1.2
+```
+docker cp z31_server12:/app/received.bin ./received.bin
+sha256sum plik.bin received.bin
+```
 
 
 
