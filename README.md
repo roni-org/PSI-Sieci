@@ -90,21 +90,30 @@ sha256sum plik.bin received.bin
 ```
 
 ### ----------- uruchomienie projektu ------------
-#### uruchomienie servera
+utworzenie sieci
+```
+docker network create z31_network
+```
+#### uruchomienie servera do projektu
 ```
 cd project
 docker build -f server/Dockerfile .
 docker run -it --rm --name pserver1 --network z31_network mini_tls_server 4444 10
 
 ```
-#### uruchomienie klienta
+#### uruchomienie klienta do projektu
 ```
 cd project
 docker build -f client/Dockerfile .
 docker run -it --rm --network z31_network mini_tls_client pserver1 4444
 
 ```
-
+wyjście:
+```
+Ctr+C
+lub
+docker stop pserver1
+```
 
 ### komendy na bigubu
 ssh username@bigubu.ii.pw.edu.pl "mkdir -p ~/server"
