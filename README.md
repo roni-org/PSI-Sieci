@@ -12,7 +12,7 @@ docker network create z31_network
 ```
 ### Uruchomienie serwera do zad 1.1
 ```
-cd server/
+cd zad1.1/server/
 docker build -t z31_pserver1 .
 docker run -it --rm --network-alias z31_pserver1 --hostname z31_pserver1 --network z31_network --name z31_pserver1 z31_pserver1 8001
 
@@ -20,7 +20,7 @@ docker run -it --rm --network-alias z31_pserver1 --hostname z31_pserver1 --netwo
 ### uruchomienie klienta do zad 1.1
 dodajemy -v $(pwd):/output by zachować wykres z dockera na hoscie
 ```
-cd client/
+cd zad1.1/client/
 docker build -t z31_pclient1 .
 docker run -it --rm -v $(pwd):/output  --network z31_network     z31_pclient1 z31_pserver1 8001
 ```
@@ -89,7 +89,31 @@ docker cp z31_server12:/app/received.bin ./received.bin
 sha256sum plik.bin received.bin
 ```
 
+### ----------- uruchomienie projektu ------------
+utworzenie sieci
+```
+docker network create z31_network
+```
+#### uruchomienie servera do projektu
+```
+cd project
+docker build -f server/Dockerfile .
+docker run -it --rm --name pserver1 --network z31_network mini_tls_server 4444 10
 
+```
+#### uruchomienie klienta do projektu
+```
+cd project
+docker build -f client/Dockerfile .
+docker run -it --rm --network z31_network mini_tls_client pserver1 4444
+
+```
+wyjście:
+```
+Ctr+C
+lub
+docker stop pserver1
+```
 
 ### komendy na bigubu
 ssh username@bigubu.ii.pw.edu.pl "mkdir -p ~/server"
