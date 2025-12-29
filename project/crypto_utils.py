@@ -57,3 +57,9 @@ def verify_then_decrypt(
     if not hmac.compare_digest(mac_received, mac_calculated):
         raise ValueError("MAC verification failed")
     return otp_decrypt(otp_key, ciphertext, counter)
+
+
+def save_keys_to_file(otp_key: bytes, mac_key: bytes, filename: str):
+    with open(filename, "w") as f:
+        f.write(f"OTP_KEY={otp_key.hex()}\n")
+        f.write(f"MAC_KEY={mac_key.hex()}\n")

@@ -1,7 +1,7 @@
 import socket
 import threading
 import sys
-from project.crypto_utils import *
+from crypto_utils import *
 
 clients = {}
 lock = threading.Lock()
@@ -40,6 +40,8 @@ def handle_client(conn, addr):
 
     shared = dh_compute_shared(client_pub, server_priv)
     otp_key, mac_key = derive_keys(shared)
+
+    save_keys_to_file(otp_key, mac_key, "session_keys.txt")
 
     with lock:
         client_id_counter += 1

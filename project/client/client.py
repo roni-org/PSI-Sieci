@@ -1,7 +1,7 @@
 import socket
 import sys
 import threading
-from project.crypto_utils import *
+from crypto_utils import *
 
 stop_event = threading.Event()
 counter = 0
