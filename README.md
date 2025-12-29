@@ -98,6 +98,7 @@ docker network create z31_network
 ```
 cd project
 docker build -f server/Dockerfile .
+(lub) docker build -t mini_tls_server -f server/Dockerfile .
 docker run -it --rm --name pserver1 --network z31_network mini_tls_server 4444 10
 
 ```
@@ -105,6 +106,7 @@ docker run -it --rm --name pserver1 --network z31_network mini_tls_server 4444 1
 ```
 cd project
 docker build -f client/Dockerfile .
+(lub) docker build -t mini_tls_client -f client/Dockerfile .
 docker run -it --rm --network z31_network mini_tls_client pserver1 4444
 
 ```
